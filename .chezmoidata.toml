@@ -1,1 +1,2 @@
-editor = "code"
+editor = "code --wait"
+#editor = "vim"
