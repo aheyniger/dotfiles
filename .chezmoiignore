@@ -11,3 +11,4 @@ Library
 {{- if eq .chezmoi.os "windows" }}
 .zshrc
 {{- end }}
+README.md
