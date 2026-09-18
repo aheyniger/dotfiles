@@ -10,3 +10,6 @@ Library/Application Support/Code/User/settings.json
 {{- if ne .chezmoi.os "windows" }}
 Documents/PowerShell/Microsoft.PowerShell_profile.ps1
 {{- end }}
+{{- if eq .chezmoi.os "windows" }}
+.zshrc
+{{- end }}

@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+install_starship() {
+    if command -v starship >/dev/null 2>&1; then
+        return 0
+    fi
+    echo "Installing starship..."
+    if command -v winget >/dev/null 2>&1; then
+        winget install --id Starship.Starship -e --silent --accept-source-agreements --accept-package-agreements
+    elif command -v brew >/dev/null 2>&1; then
+        brew install starship
+    else
+        curl -sS https://starship.rs/install.sh | sh -s -- --yes
+    fi
+}
+
+install_starship
+
+{{- if ne .chezmoi.os "windows" }}
+
+install_zsh() {
+    if command -v zsh >/dev/null 2>&1; then
+        return 0
+    fi
+    echo "Installing zsh..."
+    if command -v apt-get >/dev/null 2>&1; then
+        sudo apt-get update && sudo apt-get install -y zsh
+    elif command -v dnf >/dev/null 2>&1; then
+        sudo dnf install -y zsh
+    elif command -v pacman >/dev/null 2>&1; then
+        sudo pacman -Sy --noconfirm zsh
+    elif command -v brew >/dev/null 2>&1; then
+        brew install zsh
+    else
+        echo "No supported package manager found for installing zsh; install it manually." >&2
+    fi
+}
+
+install_omz() {
+    if [ -d "$HOME/.oh-my-zsh" ]; then
+        return 0
+    fi
+    echo "Installing oh-my-zsh..."
+    RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
+install_zsh
+install_omz
+{{- end }}

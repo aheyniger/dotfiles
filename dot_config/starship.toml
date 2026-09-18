@@ -1,0 +1,49 @@
+# Recreates the old custom prompt style:
+# [time] user@host path (git-branch)
+# $
+add_newline = false
+
+format = """
+$time $username$hostname $directory$git_branch$git_status
+$character"""
+
+palette = "blue_purple"
+
+[palettes.blue_purple]
+blue = "34"
+light_blue = "94"
+purple = "35"
+light_purple = "95"
+
+[time]
+disabled = false
+format = '[\[$time\]]($style)'
+time_format = "%H:%M:%S"
+style = "light_purple"
+
+[username]
+style_user = "blue"
+style_root = "blue"
+format = "[$user]($style)"
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "[@$hostname]($style)"
+style = "blue"
+
+[directory]
+style = "light_blue"
+truncation_length = 8
+truncate_to_repo = true
+
+[git_branch]
+format = "[ ($branch)]($style)"
+style = "purple"
+
+[git_status]
+disabled = true
+
+[character]
+success_symbol = "[\\$](blue)"
+error_symbol = "[\\$](red)"

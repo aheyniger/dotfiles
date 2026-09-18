@@ -1,0 +1,8 @@
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME=""
+plugins=(git)
+source "$ZSH/oh-my-zsh.sh"
+
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"

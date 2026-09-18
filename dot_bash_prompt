@@ -1,25 +1,28 @@
-# Custom prompt: [time] user@host path (git-branch)
-#                $
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init bash)"
+else
+    # Fallback custom prompt: [time] user@host path (git-branch)
+    #                         $
+    __update_git_branch() {
+        local branch
+        branch=$(git symbolic-ref --short HEAD 2>/dev/null) || \
+            branch=$(git rev-parse --short HEAD 2>/dev/null)
+        if [ -n "$branch" ]; then
+            GIT_BRANCH=" ($branch)"
+        else
+            GIT_BRANCH=""
+        fi
+    }
 
-__update_git_branch() {
-    local branch
-    branch=$(git symbolic-ref --short HEAD 2>/dev/null) || \
-        branch=$(git rev-parse --short HEAD 2>/dev/null)
-    if [ -n "$branch" ]; then
-        GIT_BRANCH=" ($branch)"
-    else
-        GIT_BRANCH=""
-    fi
-}
+    # Run before every prompt draw; preserve any existing PROMPT_COMMAND
+    PROMPT_COMMAND="__update_git_branch${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
-# Run before every prompt draw; preserve any existing PROMPT_COMMAND
-PROMPT_COMMAND="__update_git_branch${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+    # Blue / purple only
+    BLUE='\[\e[34m\]'
+    LBLUE='\[\e[94m\]'
+    PURPLE='\[\e[35m\]'
+    LPURPLE='\[\e[95m\]'
+    RESET='\[\e[0m\]'
 
-# Blue / purple only
-BLUE='\[\e[34m\]'
-LBLUE='\[\e[94m\]'
-PURPLE='\[\e[35m\]'
-LPURPLE='\[\e[95m\]'
-RESET='\[\e[0m\]'
-
-PS1="${LPURPLE}[\t]${RESET} ${BLUE}\u@\h${RESET} ${LBLUE}\w${RESET}${PURPLE}\${GIT_BRANCH}${RESET}\n${BLUE}\$ ${RESET}"
+    PS1="${LPURPLE}[\t]${RESET} ${BLUE}\u@\h${RESET} ${LBLUE}\w${RESET}${PURPLE}\${GIT_BRANCH}${RESET}\n${BLUE}\$ ${RESET}"
+fi
