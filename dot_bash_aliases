@@ -24,3 +24,53 @@ alias gappl='git apply' # Apply a diff/patch file, or a stashed change
 alias gspush='git stash push' # Stash uncommitted changes
 alias gspop='git stash pop' # Pop most recently stashed changes
 alias gslist='git stash list' # List stashed changes
+
+export BASHRC="$HOME/.bashrc"
+
+alias home="cd $HOME"
+alias ls='ls -CF'
+alias dir='ls -l'
+alias lsc='ls --color'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias rename='mv'
+alias hist='history 20'
+#alias mg='gcc -g -Wall -Wextra -Wwrite-strings'
+#alias mg+='g++ -g -Wall -Wextra -Wwrite-strings'
+#alias vg='valgrind --tool=memcheck --leak-check=yes'
+mkcd() {
+  mkdir "$1"
+  cd "$1"
+}
+alias ll='ls -l --block-size=K'
+alias la='ls -a'
+alias lla='ls -a -l'
+alias hk='history 30 | grep'
+alias nano='nano -l'
+alias sourcebashrc="source $BASHRC"
+#alias list-aliases=
+alias get-aliases='source ./aliases.sh > /dev/null || source ./scripts/aliases.sh'
+alias getal='get-aliases'
+checkspace() {
+  OPTIND=1
+
+  DEPTH=1
+  LOCATION="."
+  BLOCKSIZE="M"
+
+  while getopts "l:d:b:s:h" opt; do
+    case $opt in
+      l) LOCATION=$OPTARG ;;
+      d) DEPTH=$OPTARG ;;
+      s) BLOCKSIZE=$OPTARG ;;
+      b) BLOCKSIZE=$OPTARG ;;
+      h) echo "Usage: $0 [-l <location path>] [-d <search depth>] [-<s or b> <blocksize>]"
+         return 0 ;;
+      *) echo "Invalid option: -$OPTARG" >&2
+         return 1 ;;
+    esac
+  done
+
+  echo "find $LOCATION -maxdepth $DEPTH -exec du -sh {} \; | grep $BLOCKSIZE"
+  find $LOCATION -maxdepth $DEPTH -exec du -sh {} \; | grep $BLOCKSIZE
+}
