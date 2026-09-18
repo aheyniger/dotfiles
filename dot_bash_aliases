@@ -30,7 +30,11 @@ export BASHRC="$HOME/.bashrc"
 alias home="cd $HOME"
 alias ls='ls -CF'
 alias dir='ls -l'
-alias lsc='ls --color'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias lsc='ls -G'
+else
+  alias lsc='ls --color'
+fi
 alias ..='cd ..'
 alias ...='cd ../..'
 alias rename='mv'
@@ -42,7 +46,11 @@ mkcd() {
   mkdir "$1"
   cd "$1"
 }
-alias ll='ls -l --block-size=K'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias ll='ls -l -h'
+else
+  alias ll='ls -l --block-size=K'
+fi
 alias la='ls -a'
 alias lla='ls -a -l'
 alias hk='history 30 | grep'

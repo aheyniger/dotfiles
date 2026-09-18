@@ -2,7 +2,11 @@
 	#editor = code --wait
 	#editor = vim
 	editor = {{ .editor }}
+{{- if eq .chezmoi.os "windows" }}
 	autocrlf = true
+{{- else }}
+	autocrlf = input
+{{- end }}
 [user]
 	email = anders.heyniger@gmail.com
 	name = Anders Heyniger
