@@ -1,2 +1,5 @@
 dot_bashrc text eol=lf
 dot_bash_aliases text eol=lf
+dot_bash_prompt text eol=lf
+dot_zshrc text eol=lf
+.chezmoiscripts/** text eol=lf
