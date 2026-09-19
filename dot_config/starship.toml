@@ -10,40 +10,42 @@ $character"""
 palette = "blue_purple"
 
 [palettes.blue_purple]
-blue = "34"
-light_blue = "94"
-purple = "35"
-light_purple = "95"
+periwinkle = "#8aa2f7"
+sky = "#7dcfff"
+azure = "#5b8def"
+violet = "#a78bfa"
+orchid = "#c084fc"
+indigo = "#7c6cf0"
 
 [time]
 disabled = false
 format = '[\[$time\]]($style)'
 time_format = "%H:%M:%S"
-style = "light_purple"
+style = "violet"
 
 [username]
-style_user = "blue"
-style_root = "blue"
+style_user = "azure"
+style_root = "azure"
 format = "[$user]($style)"
 show_always = true
 
 [hostname]
 ssh_only = false
 format = "[@$hostname]($style)"
-style = "blue"
+style = "periwinkle"
 
 [directory]
-style = "light_blue"
+style = "sky"
 truncation_length = 8
 truncate_to_repo = true
 
 [git_branch]
 format = "[ ($branch)]($style)"
-style = "purple"
+style = "orchid"
 
 [git_status]
 disabled = true
 
 [character]
-success_symbol = "[\\$](blue)"
+success_symbol = "[\\$](indigo)"
 error_symbol = "[\\$](red)"
