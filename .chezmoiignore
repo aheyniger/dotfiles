@@ -10,5 +10,6 @@ Library
 {{- end }}
 {{- if eq .chezmoi.os "windows" }}
 .zshrc
+.tmux.conf
 {{- end }}
 README.md

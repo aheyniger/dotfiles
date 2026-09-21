@@ -54,7 +54,6 @@ fi
 alias la='ls -a'
 alias lla='ls -a -l'
 alias hk='history 30 | grep'
-alias nano='nano -l'
 alias sourcebashrc="source $BASHRC"
 #alias list-aliases=
 alias get-aliases='source ./aliases.sh > /dev/null || source ./scripts/aliases.sh'

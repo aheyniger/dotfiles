@@ -1,0 +1,26 @@
+set nocompatible
+set encoding=utf-8
+set fileformats=unix,dos
+
+syntax on
+filetype plugin indent on
+
+set number
+set ruler
+set showcmd
+set wildmenu
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set autoindent
+
+set backspace=indent,eol,start
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set scrolloff=5
+set hidden
