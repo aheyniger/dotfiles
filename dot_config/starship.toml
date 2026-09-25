@@ -4,7 +4,7 @@
 add_newline = false
 
 format = """
-$time $username$hostname $directory$git_branch$git_status
+$shell$time $username$hostname $directory$git_branch$git_status
 $character"""
 
 palette = "blue_purple"
@@ -16,6 +16,16 @@ azure = "#5b8def"
 violet = "#a78bfa"
 orchid = "#c084fc"
 indigo = "#7c6cf0"
+
+[shell]
+disabled = false
+format = "[$indicator]($style)"
+style = "periwinkle"
+powershell_indicator = "PS "
+pwsh_indicator = "PS "
+bash_indicator = ""
+zsh_indicator = ""
+unknown_indicator = ""
 
 [time]
 disabled = false
