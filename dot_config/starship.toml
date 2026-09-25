@@ -40,7 +40,7 @@ truncation_length = 8
 truncate_to_repo = true
 
 [git_branch]
-format = "[ ($branch)]($style)"
+format = "[($branch)]($style)"
 style = "orchid"
 
 [git_status]
