@@ -25,6 +25,23 @@ alias gspush='git stash push' # Stash uncommitted changes
 alias gspop='git stash pop' # Pop most recently stashed changes
 alias gslist='git stash list' # List stashed changes
 
+CHEZMOI_SOURCE_DIR=$(chezmoi source-path)
+alias cmapply='chezmoi apply'
+alias cmedit='chezmoi edit'
+#alias cmcd='chezmoi cd'
+alias cmcd="cd $CHEZMOI_SOURCE_DIR"
+alias cmdiff='chezmoi diff'
+alias cmpull='chezmoi git pull'
+alias cmupdate='chezmoi update'
+alias cme-aliases='chezmoi edit ~/.bash_aliases'
+alias cme-starship='chezmoi edit ~/.config/starship.toml'
+alias cme-git='chezmoi edit ~/.gitconfig'
+alias cme-nano='chezmoi edit ~/.nanorc'
+alias cme-vim='chezmoi edit ~/.vimrc'
+alias cme-tmux='chezmoi edit ~/tmux.conf'
+alias cme-zsh='chezmoi edit ~/.zshrc'
+alias cme-vscode="vim $CHEZMOI_SOURCE_DIR/.chezmoitemplates/vscode-settings.json.tmpl"
+
 export BASHRC="$HOME/.bashrc"
 
 alias home="cd $HOME"
