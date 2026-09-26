@@ -14,3 +14,21 @@
 	ui = auto
 [init]
 	defaultBranch = main
+[alias]
+    st = status
+    br = branch
+    cm = commit -m
+    unstage = restore --staged
+    sw = switch
+    # Adds and commits all uncommitted files with the "Work in progress" message
+    wip = "!f() { git add . && git commit -m 'Work in progress'; }; f"
+    # Prints project root
+    root = rev-parse --show-toplevel
+    # Searches for given text additions/removals in git history
+    searchfiles = "log --name-status --source --all -S"
+    # Searches for existence of given text in git history
+    searchtext = "!f() { git grep \"$*\" $(git rev-list --all); }; f"
+    # Creates color-coded visual tree of commit history
+    ol = "log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    # Deletes untracked files
+    rmuntracked = clean -df
