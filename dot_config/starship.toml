@@ -4,8 +4,8 @@
 add_newline = false
 
 format = """
-$shell$time $username$hostname $directory$git_branch$git_status
-$character"""
+$os$shell$time $username@$hostname $directory$nodejs$python$rust$golang$git_branch$git_status$cmd_duration
+$status$character"""
 
 palette = "blue_purple"
 
@@ -16,6 +16,11 @@ azure = "#5b8def"
 violet = "#a78bfa"
 orchid = "#c084fc"
 indigo = "#7c6cf0"
+
+[os]
+disabled = true
+style = "periwinkle"
+format = "[$symbol]($style) "
 
 [shell]
 disabled = false
@@ -41,7 +46,7 @@ show_always = true
 
 [hostname]
 ssh_only = false
-format = "[@$hostname]($style)"
+format = "[$hostname]($style)"
 style = "periwinkle"
 
 [directory]
@@ -49,12 +54,40 @@ style = "sky"
 truncation_length = 8
 truncate_to_repo = true
 
+[nodejs]
+disabled = true
+style = "violet"
+
+[python]
+disabled = true
+style = "indigo"
+
+[rust]
+disabled = true
+style = "orchid"
+
+[golang]
+disabled = true
+style = "azure"
+
 [git_branch]
 format = "[($branch)]($style)"
 style = "orchid"
 
 [git_status]
+disabled = false
+
+[cmd_duration]
+disabled = false
+style = "sky"
+format = "[⏱ $duration]($style) "
+min_time = 2000
+
+[status]
 disabled = true
+style = "red"
+format = "[$symbol$status]($style) "
+symbol = "✗"
 
 [character]
 success_symbol = "[\\$](indigo)"
